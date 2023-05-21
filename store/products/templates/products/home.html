@@ -1,0 +1,32 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block css %}
+
+ <link href="{% static 'vendor/css/index.css' %}"  rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<section>
+    <!--    <div class="alert alert-light text-center" role="alert">-->
+    <!--        Информационное сообщение-->
+    <!--    </div>-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 class="mt-5 title">IGUS</h1>
+                <p class="subtitle">
+                    New looks and top brands on IGUS.
+                    Free worldwide shipping! Outlet: up to -70% Own brand. -20% for new customers with promo code - "IGUS".
+                </p>
+                <button id="start-purchase-btn" type="button" class="btn btn-lg">
+                    <a id="start-purchase-link" href="{% url 'products:home' %}">
+                        Start Buy
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

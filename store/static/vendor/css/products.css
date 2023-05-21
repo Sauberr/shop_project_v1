@@ -1,0 +1,37 @@
+body {
+    padding-top: 56px;
+}
+
+footer {
+  background-color: black;
+  padding: 12px;
+  text-align: center;
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  font-family: Roboto;
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.footer-bottom {
+  font-family: Roboto;
+  color: white;
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 7px;
+}
+
+.footer-bottom a {
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+text-decoration: underline;
+}

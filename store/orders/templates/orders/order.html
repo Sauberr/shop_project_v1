@@ -1,0 +1,33 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+    <section>
+        <div class="container pt-5">
+            <div class="text-center mt-5">
+                <h1>Order #</h1>
+                <div class="orders mt-5">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Название</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                </th>
+                                <td></td>
+                                <td> $.</td>
+                                <td> $.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="float-right h4 mt-3">Total  $.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

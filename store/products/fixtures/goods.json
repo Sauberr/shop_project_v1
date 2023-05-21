@@ -1,0 +1,110 @@
+[
+{
+      "model": "products.product",
+      "pk":1,
+      "fields":{
+         "name": "Nike Black Heritage Backpack",
+         "description": "Thick fabric. Lightweight material.",
+         "price": "15.00",
+         "quantity": 20,
+         "image": "products_images/Black-Nike-Heritage-backpack.png",
+         "category": 5
+      }
+   },
+   {
+      "model": "products.product",
+      "pk": 2,
+      "fields": {
+         "name": "Dr Martens 1461 Bex Black 3-Eye Platform Shoes",
+         "description": "Smooth leather upper. Natural material.",
+         "price": "25.00",
+         "quantity": 20,
+         "image": "products_images/Black-Dr-Martens-shoes.png",
+         "category": 4
+      }
+   },
+   {
+      "model": "products.product",
+      "pk": 3,
+      "fields": {
+         "name": "T-shirt The Mountain - Breakthrough Skull",
+         "description": "Thick fabric. Lightweight material.",
+         "price": "20.00",
+         "quantity": 20,
+         "image": "products_images/T-shirt_The_Mountain_-_Breakthrough_Skull.jpg",
+         "category": 1
+      }
+   },
+   {
+      "model": "products.product",
+      "pk": 4,
+      "fields": {
+         "name": "Adidas Originals Black Monogram Hoodie",
+         "description": "Soft fabric for sweatshirts. Style and comfort is a way of life.",
+         "price": "15.00",
+         "quantity": 20,
+         "image": "products_images/Adidas-hoodie.png",
+         "category": 3
+      }
+   },
+   {
+      "model": "products.product",
+      "pk": 5,
+      "fields": {
+         "name": "The North Face blue jacket",
+         "description": "Smooth fabric. Waterproof coating. Lightweight and warm down fill.",
+         "price": "30.00",
+         "quantity": 20,
+         "image": "products_images/Blue-jacket-The-North-Face.png",
+         "category": 1
+      }
+   },
+   {
+      "model": "products.product",
+      "pk": 6,
+      "fields": {
+         "name": "ASOS DESIGN oversized sports top in brown",
+         "description": "Plush material. Comfortable and soft.",
+         "price": "10.00",
+         "quantity": 20,
+         "image": "products_images/Brown-sports-oversized-top-ASOS-DESIGN.png",
+         "category": 1
+      }
+   },
+   {
+      "model": "products.product",
+      "pk": 7,
+      "fields": {
+         "name": "ASOS DESIGN wide leg tailored trousers in navy",
+         "description": "Lightweight stretch seersucker fabric Textured fabric.",
+         "price": "20.00",
+         "quantity": 20,
+         "image": "products_images/Dark-blue-wide-leg-ASOs-DESIGN-trousers.png",
+         "category": 1
+      }
+   },
+   {
+      "model": "products.product",
+      "pk": 8,
+      "fields": {
+         "name": "T-shirt The Mountain - Hippo Head",
+         "description": "Composition: 100% cotton (preshrunk cotton) - preshrunk cotton",
+         "price": "25.00",
+         "quantity": 20,
+         "image": "products_images/T-shirt_The_Mountain_-_Hippo_Head.jpg",
+         "category": 1
+      }
+   },
+   {
+      "model": "products.product",
+      "pk": 9,
+      "fields": {
+         "name": "Kangaroo - Crab-Eating Macaque",
+         "description": "Composition: 80% cotton 20% polyester",
+         "price": "15.00",
+         "quantity": 20,
+         "image": "products_images/t-shirt-monkey.jpg",
+         "category": 1
+      }
+   }
+]

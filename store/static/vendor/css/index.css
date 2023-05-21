@@ -1,0 +1,33 @@
+body {
+    background: url("../img/background.webp") no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    padding-top: 56px;
+}
+
+#start-purchase-btn {
+    background-color: black;
+    border-color: black;
+    color: white;
+    font-family: Roboto;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#start-purchase-link {
+    text-decoration: none;
+    color: white;
+}
+
+.title {
+font-family: Roboto;
+font-size: 44px;
+}
+
+.subtitle {
+font-family: Roboto;
+font-size: 20px;
+}
+

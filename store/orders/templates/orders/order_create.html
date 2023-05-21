@@ -1,0 +1,79 @@
+{% extends 'products/base.html' %}
+{% load humanize %}
+
+{% block content %}
+    <section>
+        <div class="alert alert-warning text-center" role="alert">
+            Please fill in your email address.
+        </div>
+        <div class="container">
+            <div class="py-5 text-center">
+                <h1>Design order</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-md-5 col-lg-4 order-md-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-dark">Basket</span>
+                        <span class="badge badge-dark badge-pill text-white">{{ baskets.total_quantity }}</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        {% for basket in baskets %}
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">{{ basket.product.name }}</h6>
+                                    <small class="text-muted"> {{ basket.quantity }} things</small>
+                                </div>
+                                <span class="text-muted"> {{ basket.sum|intcomma }}$.</span>
+                            </li>
+                        {% endfor %}
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Amount payable</span>
+                            <strong>{{ baskets.total_sum|intcomma }} $.</strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <form method="POST" action=>
+                            {% csrf_token %}
+                            <label >Discount Code:</label>
+                                {{ form.discount_word }}
+                                <button class="m-1 btn btn-dark" type="submit">Submit</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-7 col-lg-8">
+                    <h4 class="mb-3">Адрес доставки</h4>
+                    <form action="{% url 'orders:order_create' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label for="{{ form.first_name.id_for_label }}" class="form-label">Name</label>
+                                {{ form.first_name }}
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="{{ form.last_name.id_for_label }}" class="form-label">Surname</label>
+                                {{ form.last_name }}
+                            </div>
+
+                            <div class="col-12 mt-3">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">Email
+                                    </label>
+                                {{ form.email }}
+                            </div>
+
+                            <div class="col-12 mt-3">
+                                <label for="{{ form.email.address }}" class="form-label">Address</label>
+                                {{ form.address }}
+                            </div>
+
+                        </div>
+
+                        <hr class="my-4">
+
+                        <button class="w-100 btn btn-dark btn-lg" type="submit">Continue</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
