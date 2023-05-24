@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
+from django.db.models import Q
 from django.shortcuts import HttpResponseRedirect, render
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
@@ -42,7 +43,15 @@ class ProductsListView(TitleMixin, ListView):
     def get_queryset(self):
         queryset = super(ProductsListView, self).get_queryset()
         category_id = self.kwargs.get('category_id')
-        return queryset.filter(category_id=category_id) if category_id else queryset
+        query = self.request.GET.get('q')  # Получаем значение из параметра "q" в запросе
+        if query:  # Если есть значение поискового запроса
+            queryset = queryset.filter(Q(name__icontains=query))
+        if category_id:
+            queryset = queryset.filter(category_id=category_id)
+        return queryset
+        # queryset = super(ProductsListView, self).get_queryset()
+        # category_id = self.kwargs.get('category_id')
+        # return queryset.filter(category_id=category_id) if category_id else queryset
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ProductsListView, self).get_context_data()
@@ -56,6 +65,8 @@ class ProductsListView(TitleMixin, ListView):
         # context['title'] = 'Clothes'
         context['categories'] = ProductCategory.objects.all()
         return context
+
+
 
 
 # def products(request, category_id=None, page_number=1):
@@ -104,5 +115,7 @@ def basket_remove(request, basket_id):
 def get_full_page_product(request, slug):
     product = Product.objects.get(slug=slug)
     return render(request, 'products/product_page.html', context={'products': product, 'title': 'Full Product Page'})
+
+
 
 

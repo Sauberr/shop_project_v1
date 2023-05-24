@@ -20,6 +20,13 @@
     <link href="/static/vendor/css/products.css" rel="stylesheet">
 {% endblock %}
 
+{% block search %}
+<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="{% url 'products:home' %}" method="get">
+{% csrf_token %}
+<input name="q" type="search" class="form-control" placeholder="Search..." aria-label="Search">
+</form>
+{% endblock %}
+
 {% block content %}
 <div class="container">
 

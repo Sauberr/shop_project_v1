@@ -53,15 +53,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="">+380 543 546 32 <i class="fa-solid fa-phone"></i></a>
                 </li>
-                    {% if product and product.slug %}
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="{% url 'products:get_full_page_product' product.slug %}" method="get">
-                            <input name="search_query" type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                    </form>
-                    {% else %}
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="" method="get">
-                            <input name="search_query" type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                    </form>
-                    {% endif %}
+                    {% block search %} {% endblock %}
                     <li class="widget-header">
 						<a href="{% url 'products:baskets' %}" class="nav-link"><i class="fa fa-shopping-cart"></i></a>
 						<span class="badge badge-pill badge-danger notify">{{ baskets.total_quantity }}</span>
