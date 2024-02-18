@@ -1,4 +1,3 @@
-
 from http import HTTPStatus
 
 import stripe
@@ -7,6 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 
@@ -36,6 +36,15 @@ class OrderListView(TitleMixin, ListView):
     def get_queryset(self):
         queryset = super(OrderListView, self).get_queryset()
         return queryset.filter(initiator=self.request.user)
+
+class OrderDetailView(DetailView):
+    template_name = 'orders/order.html'
+    model = Order
+
+    def get_context_data(self, **kwargs):
+        context = super(OrderDetailView, self).get_context_data(**kwargs)
+        context['title'] = f'Store - Заказ #{self.object.id}'
+        return context
 
 
 class OrderCreateView(TitleMixin, CreateView):
@@ -81,19 +90,24 @@ def stripe_webhook_view(request):
 
     # Handle the checkout.session.completed event
     if event['type'] == 'checkout.session.completed':
-        session = event['data']['object']
+        # Retrieve the session. If you require line items in the response, you may include them by expanding line_items.
+        session = stripe.checkout.Session.retrieve(
+            event['data']['object']['id'],
+            expand=['line_items'],
+        )
 
+        line_items = session.line_items
         # Fulfill the purchase...
-        fulfill_order(session)
+        fulfill_order(line_items)
 
     # Passed signature verification
     return HttpResponse(status=200)
 
 
 def fulfill_order(session):
+    # TODO: fill me in
     order_id = int(session.metadata.order_id)
-    order = Order.objects.get(id=order_id)
-    order.update_after_payment()
+    print("Fulfilling order")
 
 
 

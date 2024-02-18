@@ -1,4 +1,5 @@
 {% extends 'products/base.html' %}
+{% load humanize %}
 
 {% block content %}
     <section>
@@ -10,21 +11,21 @@
                         <thead>
                         <tr class="table-light">
                             <th scope="col">#</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Created</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Статус</th>
+                            <th scope="col">Создан</th>
+                            <th scope="col">Итого</th>
+                            <th scope="col">Действие</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for order in object_list %}
                             <tr>
                                 <th scope="row">{{ order.id }}</th>
-                                <td>{{ order.get_status_display  }}</td>
-                                <td>{{ order.created }}</td>
-                                <td>{{ order.basket_history.total_sum }} руб.</td>
+                                <td>{{ order.get_status_display }}</td>
+                                <td>{{ order.created|naturaltime }}</td>
+                                <td>{{ order.basket_history.total_sum|intcomma }} руб.</td>
                                 <td>
-                                    <a href="">Look</a>
+                                    <a href="{% url 'orders:order' order.id %}">просмотреть</a>
                                 </td>
                             </tr>
                         {% endfor %}
